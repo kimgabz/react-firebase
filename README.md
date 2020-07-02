@@ -66,3 +66,29 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+# Install JSON Server
+
+npm install -g json-server
+
+# Create a db.json file with some data
+
+{
+"posts": [
+{ "id": 1, "title": "json-server", "author": "typicode" }
+],
+"comments": [
+{ "id": 1, "body": "some comment", "postId": 1 }
+],
+"profile": { "name": "typicode" }
+}
+
+# Start JSON Server
+
+json-server --watch db.json --port 1338
+
+Now if you go to http://localhost:3000/posts/1, you'll get
+
+{ "id": 1, "title": "json-server", "author": "typicode" }
+
+https://github.com/typicode/json-server
