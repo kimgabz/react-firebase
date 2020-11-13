@@ -1,51 +1,32 @@
 import React from 'react';
-import * as API from '../shared/http';
-import Link from '../components/link/Link';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header/Header';
-import ErrorMessage from '../components/Error/ErrorMessage';
+import Links from '../components/link/Links';
+import AddLink from '../components/link/AddLink';
+import EditLink from '../components/link/EditLink';
+import NotFound from '../components/notFound/NotFound';
+// import { AppProvider } from '../store/context';
+import store from '../store';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      links: [],
-      error: null,
-    };
-  }
-
-  componentDidMount() {
-    this.getLinks();
-  }
-
-  componentDidCatch(error, info) {
-    console.error(error);
-    console.error(info);
-    this.setState(() => ({ error: error }));
-  }
-
-  getLinks() {
-    API.fetchLinks()
-      .then((result) => {
-        this.setState(() => ({ links: this.state.links.concat(result.data) }));
-      })
-      .catch((error) => {
-        this.setState(() => ({ error: error }));
-      });
-  }
-
   render() {
-    if (this.state.error) {
-      return <ErrorMessage error={this.state.error} />;
-    }
     return (
-      <div className="App">
-        {/* <h1> Hacker news - App component</h1> */}
-        <Header branding="Hacker News" />
-        {this.state.links.map((link) => (
-          <Link key={link.id} link={link} />
-        ))}
-      </div>
+      // <AppProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <React.Fragment>
+            <Header branding="Data News" />
+            <Switch>
+              <Route exact path="/" component={Links} />
+              <Route exact path="/links/submit" component={AddLink} />
+              <Route exact path="/links/edit/:id" component={EditLink} />
+              <Route exact component={NotFound} />
+            </Switch>
+          </React.Fragment>
+        </BrowserRouter>
+      </Provider>
+      // </AppProvider>
     );
   }
 }

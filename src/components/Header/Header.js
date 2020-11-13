@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Header = (props) => {
   return (
-    <div>
+    <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           {props.branding}
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -31,6 +32,11 @@ const Header = (props) => {
                 Top
               </a>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/links/submit">
+                Submit
+              </Link>
+            </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input
@@ -44,7 +50,7 @@ const Header = (props) => {
           </form>
         </div>
       </nav>
-    </div>
+    </>
   );
 };
 

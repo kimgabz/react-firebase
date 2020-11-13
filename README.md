@@ -67,6 +67,21 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+# libraries
+
+- axios
+- bootstrap
+- react-loader-spinner
+- npm-run-all
+- classnames
+- react-router-dom
+- react && react-redux
+- redux-thunk
+
+# Commands
+
+create-react-app _react-project-name_
+
 # Install JSON Server
 
 npm install -g json-server
@@ -92,3 +107,8 @@ Now if you go to http://localhost:3000/posts/1, you'll get
 { "id": 1, "title": "json-server", "author": "typicode" }
 
 https://github.com/typicode/json-server
+
+# Theme
+
+- bootswatch.com/flatly
+- magic.reactjs.net/htmltojsx.htm
